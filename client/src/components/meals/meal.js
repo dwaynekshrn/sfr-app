@@ -27,7 +27,7 @@ class Meal extends Component{
                     <a>{meal.genre}</a>
                   </div>
                 </div>
-                
+
                 </div>
             )
         })
@@ -38,7 +38,7 @@ class Meal extends Component{
                {this.renderMeals()}
                <MealInfo />
             </div>
-          
+
         )
     }
 }

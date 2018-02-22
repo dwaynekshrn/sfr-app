@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 
 const mongoose = require('mongoose');
+const cookieSession = require('cookie-session');
 const keys = require('./config/keys');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
@@ -25,6 +26,12 @@ app.use(flash());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true}));
+
+app.use(
+    cookieSession({
+       maxAge: 30 * 24 * 60 * 60 * 1000
+    })
+);
 
 require('./routes/ninjaRoutes')(app, passport);
 require('./routes/mealRoutes')(app);
