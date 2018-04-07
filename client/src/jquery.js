@@ -1,4 +1,5 @@
 import $ from "jquery";
+import Materialize from 'materialize-css/dist/js/materialize.min';
 
 $(document).ready(function(){
     $(".button-collapse").sideNav();
@@ -6,4 +7,5 @@ $(document).ready(function(){
     $('.carousel.carousel-slider').carousel({fullWidth: true});
     $('.parallax').parallax();
     $('select').material_select();
+    $('.slider').slider();
   });

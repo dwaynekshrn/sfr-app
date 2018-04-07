@@ -23,8 +23,9 @@ export const submitMeals = (values, history) => async dispatch => {
     dispatch({type: FETCH_MEALS, payload: res.data });
   }
 
-  export const mealInfo = meal => async dispatch => {
-    dispatch({type: MEAL_INFO, payload: meal });
+  export const mealInfo = (mealIDb) => async dispatch => {
+    const req = await axios.get(`/api/meals/${mealIDb}`);
+    dispatch({type: MEAL_INFO, payload: req });
   }
 
   export const watchMeal = meal => async dispatch => {

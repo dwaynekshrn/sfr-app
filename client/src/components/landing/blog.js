@@ -9,7 +9,7 @@ const Blog = () => {
              <div className="col s12 m4 l6">
                      <div className="card z-depth-0">
                        <div className="card-image">
-                         <img src="images/pam-blog.svg" alt="blog-img" />
+                         <img src="https://source.unsplash.com/user/erondu/" alt="blog-img" />
                        </div>
                        <div className="card-content">
                           <b>The Latest News From Disqus</b>

@@ -5,7 +5,7 @@ import Meal from './meal';
 class Meals extends Component{
     render(){
         return(
-            <div className="container">
+            <div className="container-fluid">
                <Meal />
             </div>
         )

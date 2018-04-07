@@ -14,7 +14,7 @@ class Landing extends Component{
             <div>
                <Slider />
         
-    <div className="container">
+    <div className="container" style={{marginTop: '20px'}}>
                <Properties />
                <Stats />
     </div>

@@ -1,22 +1,29 @@
+import _ from 'lodash';
 import React, {Component} from 'react';
 import MealInfo from './mealInfo';
-import {bindActionCreators} from 'redux';
+import MealSlider from './mealSlider/mealSlider';
+import {Link} from 'react-router-dom';
 import { connect } from 'react-redux';
-import { fetchMeals, mealInfo } from '../../actions';
+import { fetchMeals, mealInfo } from '../../actions/';
 
 class Meal extends Component{
     componentDidMount(){
         this.props.fetchMeals();
     }
 
+    renderSliders(){
+        return <MealSlider />
+    }
+
     renderMeals(){
-        return this.props.meals.map(meal => {
+        return _.map(this.props.meals, meal => {
             return(
                 <div className="col s12 m4 l3" key={meal._id}>
-                <div className="card" style={{height: '300px'}}>
+                <div className="card z-depth-0" style={{ height: '495px'}}>
                     <div className="card-image">
-                    <img src={'/images' + meal.poster} alt={meal.poster} />
-                    <a onClick={() => this.props.mealInfo(meal)} href="/meals/:meal"  className="btn-floating halfway-fab waves-effect waves-light red right"><i className="material-icons">add</i></a>
+                    <img src={'https://shaolinfriedrice.com/covers/' + meal.poster } alt={meal.poster} height="270px" />
+                    <Link to={`/meals/${meal.mealIDb}`} onClick={() => <MealInfo watch={() => this.setState({playing: true}) }  />}  className="btn-floating waves-effect waves-light green right"><i className="material-icons">play_arrow</i></Link>
+                    <Link to={`/meals/${meal.mealIDb}`} className="btn-floating waves-effect waves-light red right"><i className="material-icons">toc</i></Link>
                     </div>
                     <div className="card-content">
                     <h5>{meal.title}</h5>
@@ -27,18 +34,18 @@ class Meal extends Component{
                     <a>{meal.genre}</a>
                   </div>
                 </div>
-
                 </div>
             )
         })
     }
     render(){
         return(
-            <div className="row">
-               {this.renderMeals()}
-               <MealInfo />
+            <div>
+            <div>
+               {this.renderSliders()}
             </div>
-
+               {this.renderMeals()}
+            </div>
         )
     }
 }
@@ -47,8 +54,4 @@ function mapStateToProps({ meals }){
     return { meals }
 }
 
-function matchDispatchToProps(dispatch){
-    return bindActionCreators({ mealInfo, fetchMeals }, dispatch)
-}
-
-export default connect(mapStateToProps, matchDispatchToProps)(Meal);
+export default connect(mapStateToProps, { mealInfo, fetchMeals })(Meal);

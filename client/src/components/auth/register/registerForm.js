@@ -9,9 +9,9 @@ class RegisterForm extends Component {
 renderFields(){
   return(
     <div>
-        <div class="input-field col s12">
-      <select>
-        <option value="" disabled selected>Choose your Account Type</option>
+        <div className="input-field col s12">
+      <select name="accountType">
+        <option value="" disabled select="true">Choose your Account Type</option>
         <option value="Cop">Cop</option>
         <option value="Pirate">Pirate</option>
         <option value="Monk">Monk</option>
@@ -31,7 +31,7 @@ renderFields(){
 <div className="row">
     <div className="input-field col s12">
       <p>Email</p>
-      <input type="email" name="password" style={{ marginBottom: '5px'}} />
+      <input type="email" name="email" style={{ marginBottom: '5px'}} />
       <div className="red-text" style={{ marginBottom: '20px'}}>
       </div>
     </div>
